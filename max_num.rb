@@ -1,5 +1,11 @@
 def max_num(array)
-  p array.sort.last
+  max = array.first
+  array.each do |num|
+    if num > max
+      max = num
+    end
+  end
+  p max
 end
 
-max_num([3, 100, 2, -90, 201001, 99])
+max_num([])
