@@ -1,3 +1,4 @@
+require 'pry'
 class Node
   attr_accessor :value
   attr_accessor :next_node
@@ -38,6 +39,15 @@ class List
     end
     node
   end
+
+  def each
+    node = @head
+
+    while !node.nil?
+      yield(node.value)
+      node = node.next_node
+    end
+  end
 end
 
 
@@ -50,3 +60,7 @@ list.add(10)
 
 puts list[2].value
 puts list.last.value
+binding.pry
+list.each do |value|
+  puts value
+end
