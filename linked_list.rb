@@ -30,6 +30,14 @@ class List
     end
     location
   end
+
+  def last
+    node = @head
+    until node.next_node == nil
+      node = node.next_node
+    end
+    node
+  end
 end
 
 
@@ -41,3 +49,4 @@ list.add(9)
 list.add(10)
 
 puts list[2].value
+puts list.last.value
