@@ -14,4 +14,4 @@ def frequencies(string)
   end
 end
 
-frequencies('bananahammock')
+frequencies('mississippi')
