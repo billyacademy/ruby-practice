@@ -2,6 +2,8 @@ def gcd(a, b)
   count = 1
   divisor_array = []
 
+  return puts "There is no common divisor" if a == 0 || b == 0
+
   while count <= (a/2) || count <= (b/2)
     if a % count == 0 && b % count == 0
       divisor_array << count
@@ -14,4 +16,4 @@ def gcd(a, b)
 end
 
 
-puts gcd(124, 48)
+puts gcd(-24, -48)
