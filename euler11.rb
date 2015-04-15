@@ -25,6 +25,96 @@ def largest_four_across(array)
   greatest_product
 end
 
+def largest_four_down(array)
+  column = 0
+  starting_column = 0
+  element = 0
+  product = 1
+  greatest_product = 0
+
+  until element == 20
+    until starting_column == 17
+      4.times do
+        current_column = array[column]
+        product = product*current_column[element]
+        column += 1
+      end
+      greatest_product = product if product > greatest_product
+      starting_column += 1
+      product = 1
+      column = starting_column
+    end
+    element += 1
+    starting_column = 0
+    column = starting_column
+  end
+  greatest_product
+end
+
+def largest_diagonal_four_down(array)
+  column = 0
+  starting_column = 0
+  starting_element = 0
+  element = 0
+  product = 1
+  greatest_product = 0
+
+  until starting_element == 17
+    until starting_column == 17
+      4.times do
+        current_column = array[column]
+        product = product*current_column[element]
+        column += 1
+        element += 1
+      end
+      greatest_product = product if product > greatest_product
+      product = 1
+      element = starting_element
+      starting_column += 1
+      column = starting_column
+    end
+    starting_element += 1
+    starting_column = 0
+    column = starting_column
+    element = starting_element
+  end
+  greatest_product
+end
+
+def largest_diagonal_four_up(array)
+  column = 19
+  starting_column = 19
+  starting_element = 0
+  element = 0
+  product = 1
+  greatest_product = 0
+
+  until starting_element == 17
+    until starting_column == 2
+      4.times do
+        current_column = array[column]
+        product = product*current_column[element]
+        column -= 1
+        element += 1
+      end
+      greatest_product = product if product > greatest_product
+      product = 1
+      element = starting_element
+      starting_column -= 1
+      column = starting_column
+    end
+    starting_element += 1
+    starting_column = 19
+    column = starting_column
+    element = starting_element
+  end
+  greatest_product
+end
+
+def greatest_product_of_four_adjacent_numbers(array)
+  row_array = [largest_diagonal_four_up(array), largest_diagonal_four_down(array), largest_four_down(array), largest_four_across(array)]
+  row_array.max
+end
 
 grid_array = [
 [8, 2, 22, 97, 38, 15, 0, 40, 0, 75, 4, 5, 7, 78, 52, 12, 50, 77, 91, 8],
@@ -49,4 +139,5 @@ grid_array = [
 [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ]
 
-puts largest_four_across(grid_array)
+
+puts greatest_product_of_four_adjacent_numbers(grid_array)
